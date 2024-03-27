@@ -35,7 +35,7 @@ public class StudentEntity {
     // @GeneratedValue:
     // - Primary key의 자동 생성 전략을 지정
     // - AUTO: JPA가 적절한 생성 전략을 선택
-    // - IDENTITY: auto-increment 전략
+    // - IDENTITY: auto_increment 전략
     // - SEQUENCE: 데이터베이스 sequence 전략
     // - TABLE: 키 생성 테이블 전략
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -47,8 +47,8 @@ public class StudentEntity {
     // - length 속성: 컬럼의 길이
     // - 만약, 테이블의 컬럼명과 클래스의 필드명이 같으면 생략 가능
     @Column(name = "student_number", nullable = false, unique = true, insertable = false, updatable = false, length = 10)
-    private Integer studentNumber;0
-    
+    private Integer studentNumber;  // 변수명 studnet_number(스네이크 표기법),
+                                    // studentNumber(카멜 표기법)으로 작성해야함
     private String name;
     private Integer age;
     private String address;
