@@ -3,6 +3,8 @@ package com.kimdain.basic.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import com.kimdain.basic.entity.StudentEntity;
+
 // Repository 레이어 :
 // - 데이터베이스와 관련된 작업들을 처리하는 영역
 // - Service가 비즈니스 로직 수행중 데이터베이스 작업이 필요할 때 Repository를 거쳐서 데이터 베이스 작업을 수행
