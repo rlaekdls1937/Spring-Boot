@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.kimdain.basic.dto.request.student.PatchStudentRequestDto;
 import com.kimdain.basic.dto.request.student.PostStudentRequestDto;
 import com.kimdain.basic.service.StudentService;
 
@@ -25,28 +26,30 @@ public class StudentController {
     // CREATE 
     @PostMapping("/")     
     public ResponseEntity<String> postStudent( 
-        @RequestBody @Valid PostStudentRequestDto requestbody
+        @RequestBody @Valid PostStudentRequestDto requestBody
     ){
-        ResponseEntity<String> response = 
-        studentService.postStudent(requestbody);
-        
+        ResponseEntity<String> response = studentService.postStudent(requestBody);
+        studentService.postStudent(requestBody);
         return response;
-        
-
     }
     
     //UPDATE 
     @PatchMapping("/")
-    public ResponseEntity<?> patchStudent(){
-        return null;
+    public ResponseEntity<String> patchStudent(
+        @RequestBody @Valid PatchStudentRequestDto requestBody
+    ){
+        ResponseEntity<String> response = studentService.patchStudent(requestBody);
+        return response;
     }
 
     // DELETE 
     @DeleteMapping("/{studentNumber}")
-    public ResponseEntity<?> deleteStudent(
+    public ResponseEntity<String> deleteStudent(
         @PathVariable("studentNumber") Integer studentNumber
     ){
-        return null;
+        ResponseEntity<String> reponse = 
+        studentService.deleteStudent(studentNumber);
+        return reponse;
     }
 
 }
