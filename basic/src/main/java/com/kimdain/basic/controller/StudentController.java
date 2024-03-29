@@ -29,7 +29,6 @@ public class StudentController {
         @RequestBody @Valid PostStudentRequestDto requestBody
     ){
         ResponseEntity<String> response = studentService.postStudent(requestBody);
-        studentService.postStudent(requestBody);
         return response;
     }
     
