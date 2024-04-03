@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.board.dto.response.ResponseDto;
+
 import com.example.board.dto.response.board.GetLatestListResponseDto;
 import com.example.board.service.BoardService;
 
