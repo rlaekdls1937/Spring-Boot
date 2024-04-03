@@ -32,9 +32,9 @@ public class BoardServiceImplementation implements BoardService {
         
 
         // 2. 조회 결과를 BoardListItem의 리스트로 변경
-        List<BoardListItem> lateList = new ArrayList<>();
+        List<BoardListItem> latestList = new ArrayList<>();
         // 3. 변경후 DTO로 성공 데이터를 Controller에 반환
-        return GetLatestListResponseDto.success(lateList);
+        return GetLatestListResponseDto.success(latestList);
         // GetLatestListResponseDto body = new GetLatestListResponseDto(lateList);
         // return ResponseEntity.status(HttpStatus.OK).body(body);
 

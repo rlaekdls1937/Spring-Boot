@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.board.dto.response.ResponseDto;
 import com.example.board.dto.response.board.GetUserResponseDto;
+import com.example.board.entity.UserEntity;
 import com.example.board.repository.UserRepository;
 import com.example.board.service.UserService;
 
@@ -20,11 +21,31 @@ public class UserServiceImplementation implements UserService {
     public ResponseEntity<? super GetUserResponseDto> getUser(String email){
 
         try {
-            return ResponseDto.notExistUser();
-        }catch (Exception exception){
+        // 1. User 테이블에서 email 해당하는 유저 조회
+        // SELECT * FROM user WHERE email = :email
+        // findByEmail(email)
+        // (email -> (조회 결과 인스턴스))    
+        UserEntity userEntity = userRepository.findByEmail(email);
+        } catch (Exception exception) {
+            // 1-1. 조회 처리 중 데이터베이스관련 예외가 발생하면 데이터베이스 에러 응답처리
             exception.printStackTrace();
             return ResponseDto.databaseError();
         }
-        return GetUserResponseDto.success("email@email.com", "홍길동", null);
-    }
+
+        
+        // 2. 조회 결과에 따라 반환 결정
+        // 1) false이면 존재하지 않는 유저 응답처리 x
+        // 2) null 이면 존재하지 않는 유저 응답처리
+
+        // 3. 조회 결과 데이터를 성공 응답
+        
+        
+    }    
 }
+
+// 사용자로부터 email 입력
+// ---------------------------
+
+// 성공
+// 존재하지 않는 유저
+// 데이터베이스 에러
