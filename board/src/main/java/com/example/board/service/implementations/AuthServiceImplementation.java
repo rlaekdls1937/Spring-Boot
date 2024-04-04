@@ -25,19 +25,19 @@ public class AuthServiceImplementation implements AuthService{
         String email = dto.getEmail();
         boolean isExistEmail = userRepository.existsByEmail(email);
         // 1-1. 1에 대한 조회결과가 true 중복된 이메일 응답 처리
-        if (isExistEmail) return ResponseDto.duplicateFail();
+        if (isExistEmail) return ResponseDto.duplicateFailEmail();
         // 2. 입력받은 닉네임이 유저 테이블에 존재하는지 조회 
         // nickname -> (true, false)
         String nickname = dto.getNickname();
         boolean isExistNickname = userRepository.existsByNickname(nickname);
         // 2-1. 2에 대한 조회결과가 true 중복된 닉네임 응답 처리
-        if (isExistNickname) return ResponseDto.duplicateFail();
+        if (isExistNickname) return ResponseDto.duplicateFailNickname();
         // 3. 입력받은 휴대전화번호이 유저 테이블에 존재하는지 조회 
         // telNumber -> (true, false)
         String telNumber = dto.getTelNumber();
         boolean isExistTelNumber = userRepository.existsByTelNumber(telNumber);
         // 3-1. 3에 대한 조회결과가 true 중복된 휴대전화번호 응답 처리
-        if (isExistTelNumber) return ResponseDto.duplicateFail();
+        if (isExistTelNumber) return ResponseDto.duplicateFailTelNumber();
 
         // 4. 유저 레코드 삽입 
         // 4-1. 유저 엔터티의 인스턴스 생성
@@ -55,11 +55,6 @@ public class AuthServiceImplementation implements AuthService{
         
     }
         
-        
-    }
-
-    @Override
-    public ResponseEntity<String> response(ResponseDto dto) {
         
     }
     

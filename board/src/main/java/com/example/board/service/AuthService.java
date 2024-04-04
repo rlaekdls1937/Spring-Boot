@@ -7,6 +7,7 @@ import com.example.board.dto.response.ResponseDto;
 
 public interface AuthService {
     ResponseEntity<ResponseDto> signUp(SignUpRequestDto dto);
-    ResponseEntity<String> response(ResponseDto dto);
+    
+    
     
 }

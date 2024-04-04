@@ -3,6 +3,7 @@ package com.example.board.service.implementations;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.example.board.dto.request.user.PatchNicknameRequestDto;
 import com.example.board.dto.response.ResponseDto;
 import com.example.board.dto.response.board.GetUserResponseDto;
 import com.example.board.entity.UserEntity;
@@ -43,11 +44,30 @@ public class UserServiceImplementation implements UserService {
             exception.printStackTrace();
             return ResponseDto.databaseError();
         }
-        
-        
+    }
 
+    @Override
+    public ResponseEntity<ResponseDto> patchNickname(PatchNicknameRequestDto dto) {
         
+        try {
 
+            String nickname = dto.getNickname();
+            boolean isExistNickname = userRepository.existsByNickname(nickname);
+            if (isExistNickname) return ResponseDto.duplicateFailNickname();
+            
+            String email = dto.getEmail();
+            UserEntity userEntity = userRepository.findByEmail(email);
+            if (userEntity == null) return ResponseDto.notExistUser();
+
+            userEntity.setNickname(nickname);
+            userRepository.save(userEntity);
+
+            return ResponseDto.success();
+
+        } catch (Exception exception) {
+            exception.printStackTrace();
+            return ResponseDto.databaseError();
+        }
     }    
 }
 

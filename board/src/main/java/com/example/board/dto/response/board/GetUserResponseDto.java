@@ -3,7 +3,7 @@ package com.example.board.dto.response.board;
 import com.example.board.dto.response.ResponseDto;
 import com.example.board.entity.UserEntity;
 
-import java.util.List;
+
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
