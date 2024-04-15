@@ -26,7 +26,9 @@ public class WebSecurityConfig {
         // class::method :
         // - 메소드 참조, 특정 클래스의 메서드를 참조할 때 사용
         // - 일반적으로 매개변수로 메서드를 전달할 때 사용됨
-        security.httpBasic(HttpBasicConfigurer::disable);
+        security
+        // basic authentication 미사용 지정
+        .httpBasic(HttpBasicConfigurer::disable);
         return security.build();
     } 
 }
