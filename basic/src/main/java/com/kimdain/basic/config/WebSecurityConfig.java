@@ -109,7 +109,7 @@ public class WebSecurityConfig {
 
         // 인증 과정 중에 발생한 예외 처리
         .exceptionHandling(exceptionHandling -> exceptionHandling
-        .authenticationEntryPoint(new FailedAuthenticationEntryPoint())
+            .authenticationEntryPoint(new FailedAuthenticationEntryPoint())
         );
 
         // 우리가 생성한 jwtAuthenticationFilter를  UsernamePasswordAuthenticationFileter 이전에 등록
